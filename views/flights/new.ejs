@@ -12,6 +12,15 @@
     <form action="/flights" method="POST">
       <label>Airline: <input type="text" name="airline" /> </label><br />
       <label>Flight Number: <input type="text" name="flightNo" /> </label>
+      <label>Choose a time for your flight:</label>
+      <input
+        type="datetime-local"
+        id="meeting-time"
+        name="departs"
+        value="2019-08-17T19:30"
+        min="2019-08-07T00:00"
+        max="2020-08-14T00:00"
+      />
       <input type="submit" value="Add Flight" />
     </form>
   </body>
