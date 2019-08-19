@@ -17,9 +17,12 @@ function newTicket(req, res) {
 }
 
 function create(req, res) {
-  req.body.ticket = req.params.id;
-  Ticket.create(req.body, (err, ticket) => {
-    console.log(ticket);
-    res.redirect(`/flights/${req.params.id}`);
+  Flight.findById(req.params.id, function(err, flight) {
+    var ticket = new Ticket(req.body);
+    ticket.save(function(err) {
+      if (err) return res.redirect("/tickets/new");
+      console.log(ticket);
+      res.redirect(`/flights/${flight._id}`);
+    });
   });
 }
